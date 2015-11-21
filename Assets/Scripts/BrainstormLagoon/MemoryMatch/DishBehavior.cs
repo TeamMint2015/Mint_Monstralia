@@ -8,10 +8,16 @@ public class DishBehavior : MonoBehaviour {
 	///Has the player made a guess.
 	private static bool isGuessing;
 
+
 	///Reference to the top part of the dish.
 	public GameObject top;
 	///Reference to the bottom part of the dish.
 	public GameObject bottom;
+
+
+
+	public GameObject sceneSoundManager;
+	public AudioClip [] clips;
 
 	///Use this for initialization.
 	void Start () {
@@ -36,16 +42,24 @@ public class DishBehavior : MonoBehaviour {
 			//Reveal the food underneath the dish by setting the sprite renderer to disabled.
 			top.GetComponent<SpriteRenderer>().enabled = false;
 			if(MemoryMatchGameManager.GetInstance().GetFoodToMatch().name != myFood.name) {
+				PlayClip (clips[0]);
 				yield return new WaitForSeconds(1.5f);
 				top.GetComponent<SpriteRenderer>().enabled = true;
 			}
 			else {
+				PlayClip (clips[0]);
 				top.GetComponent<SpriteRenderer>().enabled = false;
+				gameObject.GetComponent<CircleCollider2D>().enabled = false;
 				MemoryMatchGameManager.GetInstance().ChooseFoodToMatch();
 			}
 			//The player can now guess again.
 			isGuessing = false;
 			return true;
 		}
+	}
+
+	void PlayClip(AudioClip clip)
+	{
+		sceneSoundManager.GetComponent<SceneSound> ().PlayClip (clip);
 	}
 }

@@ -11,5 +11,7 @@ public class Loader : MonoBehaviour {
 			Instantiate(singleton);
 		}
 
+		AudioListener.pause = false;
+
 	}
 }

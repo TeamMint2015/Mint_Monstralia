@@ -19,9 +19,11 @@ public class SoundManager : MonoBehaviour {
 		DontDestroyOnLoad(this);
 	}
 
+
 	public static SoundManager GetInstance() {
 		return instance;
 	}
+
 
 	public void mute() {
 		if(!muted) {
@@ -35,6 +37,7 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void PlayClip(AudioClip clip) {
+
 		SFXsource.clip = clip;
 		SFXsource.Play ();
 	}
@@ -54,7 +57,7 @@ public class SoundManager : MonoBehaviour {
 			newSource.clip = clip;
 			newSource.loop = true;
 			newSource.playOnAwake = true;
-			newSource.volume = 0.5f;
+			newSource.volume = 0.25f;
 			newSource.Play();
 		}
 

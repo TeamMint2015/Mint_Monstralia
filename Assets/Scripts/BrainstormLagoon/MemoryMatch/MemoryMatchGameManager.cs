@@ -25,6 +25,8 @@ public class MemoryMatchGameManager : MonoBehaviour {
 	public Text timerText;
 	public Text scoreText;
 	public Canvas gameOverCanvas;
+	public GameObject sceneSoundManager;
+	public AudioClip [] clips;
 
 	// Use this for initialization
 	void Awake () {
@@ -64,6 +66,7 @@ public class MemoryMatchGameManager : MonoBehaviour {
 	}
 
 	public void StartGame() {
+
 		gameStartup = true;
 
 		SpawnDishes();
@@ -126,6 +129,8 @@ public class MemoryMatchGameManager : MonoBehaviour {
 
 		if(activeFoods.Count > 0) {
 			currentFoodToMatch = SpawnFood(activeFoods, false, foodToMatchSpawnPos, foodToMatchSpawnPos, foodToMatchScale);
+
+			StartCoroutine(PlayFoodName (currentFoodToMatch));
 		}
 	}
 
@@ -147,6 +152,7 @@ public class MemoryMatchGameManager : MonoBehaviour {
 	}
 
 	void GameOver() {
+		PlayClip (clips [0]);
 		gameStarted = false;
 		if(score >= difficultyLevel*3) {
 			GameManager.GetInstance().LevelUp("MemoryMatch");
@@ -166,5 +172,51 @@ public class MemoryMatchGameManager : MonoBehaviour {
 
 	void UpdateScoreText() {
 		scoreText.text = "Score: " + score;
+	}
+
+	void PlayClip(AudioClip clip)
+	{
+		Debug.Log ("Called");
+		sceneSoundManager.GetComponent<SceneSound> ().PlayClip (clip);
+	}
+
+	IEnumerator PlayFoodName(GameObject currentFoodToMatch)
+	{
+		switch(currentFoodToMatch.name)
+		{
+		case "Apple(Clone)":
+			Debug.Log ("Apple");
+			yield return new WaitForSeconds(1.0f);
+			PlayClip (clips[1]);
+			break;
+			
+		case "Artichoke(Clone)":
+			Debug.Log ("Artichoke");
+			yield return new WaitForSeconds(1f);
+			PlayClip (clips[2]);
+			break;
+			
+		case "Banana(Clone)":
+			Debug.Log ("Banana");
+			yield return new WaitForSeconds(1f);
+			PlayClip (clips[3]);
+			break;
+			
+		case "Brocolli(Clone)":
+			Debug.Log ("Brocolli");
+			yield return new WaitForSeconds(1f);
+			PlayClip (clips[4]);
+			break;
+			
+		case "Cabbage(Clone)":
+			Debug.Log ("Cabbage");
+			yield return new WaitForSeconds(1f);
+			PlayClip (clips[5]);
+			break;
+			
+		default:
+			Debug.Log (currentFoodToMatch.name);
+			break;
+		}
 	}
 }
