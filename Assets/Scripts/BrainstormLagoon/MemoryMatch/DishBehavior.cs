@@ -42,7 +42,7 @@ public class DishBehavior : MonoBehaviour {
 			//Reveal the food underneath the dish by setting the sprite renderer to disabled.
 			top.GetComponent<SpriteRenderer>().enabled = false;
 			if(MemoryMatchGameManager.GetInstance().GetFoodToMatch().name != myFood.name) {
-				PlayClip (clips[0]);
+				PlayClip (clips[1]);
 				yield return new WaitForSeconds(1.5f);
 				top.GetComponent<SpriteRenderer>().enabled = true;
 			}
