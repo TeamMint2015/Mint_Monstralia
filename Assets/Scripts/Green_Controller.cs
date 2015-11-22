@@ -36,4 +36,12 @@ public class Green_Controller : MonoBehaviour {
 			anim.SetTrigger ("Mouth");
 		} 
 	}
+
+	public void Chew (int state)
+	{
+		if (state == 1)
+		{
+			anim.SetTrigger ("Chewing");
+		}
+	}
 }
