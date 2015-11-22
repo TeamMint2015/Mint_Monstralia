@@ -9,6 +9,8 @@ public class SoundManager : MonoBehaviour {
 	public AudioSource backgroundSource;
 	public AudioSource SFXsource;
 
+	public string language;
+
 	void Awake () {
 		if(instance == null) {
 			instance = this;
@@ -17,6 +19,8 @@ public class SoundManager : MonoBehaviour {
 			Destroy(gameObject);
 		}
 		DontDestroyOnLoad(this);
+
+		language = "English";
 	}
 
 
@@ -75,6 +79,19 @@ public class SoundManager : MonoBehaviour {
 		}
 		if(toMainMap)
 			PlayBackgroundMusic();
+	}
+
+	public void SetLanguage()
+	{
+		if (language == "English") 
+		{
+			language = "Spanish";
+		} 
+
+		else 
+		{
+			language = "English";
+		}
 	}
 
 }

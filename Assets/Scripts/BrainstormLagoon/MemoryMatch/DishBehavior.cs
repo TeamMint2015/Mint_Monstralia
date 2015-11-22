@@ -9,6 +9,7 @@ public class DishBehavior : MonoBehaviour {
 	private static bool isGuessing;
 
 
+
 	///Reference to the top part of the dish.
 	public GameObject top;
 	///Reference to the bottom part of the dish.
@@ -50,7 +51,7 @@ public class DishBehavior : MonoBehaviour {
 				PlayClip (clips[0]);
 				top.GetComponent<SpriteRenderer>().enabled = false;
 				gameObject.GetComponent<CircleCollider2D>().enabled = false;
-				MemoryMatchGameManager.GetInstance().ChooseFoodToMatch();
+				MemoryMatchGameManager.GetInstance ().StartCoroutine("ChooseFoodToMatch");
 			}
 			//The player can now guess again.
 			isGuessing = false;

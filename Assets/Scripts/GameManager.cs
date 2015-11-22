@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null;
 
+
+	private GameObject soundManager;
+
 	string monster;
 
 	void Awake() {

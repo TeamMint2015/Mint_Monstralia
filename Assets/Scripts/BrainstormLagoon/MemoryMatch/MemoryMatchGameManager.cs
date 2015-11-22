@@ -12,6 +12,7 @@ public class MemoryMatchGameManager : MonoBehaviour {
 	private GameObject currentFoodToMatch;
 	private int difficultyLevel;
 	private List<GameObject> activeFoods;
+	private GameObject soundManager;
 
 	public Transform foodToMatchSpawnPos;
 	public Transform[] foodSpawnPos;
@@ -27,6 +28,7 @@ public class MemoryMatchGameManager : MonoBehaviour {
 	public Canvas gameOverCanvas;
 	public GameObject sceneSoundManager;
 	public AudioClip [] clips;
+	public string language;
 
 	// Use this for initialization
 	void Awake () {
@@ -46,6 +48,11 @@ public class MemoryMatchGameManager : MonoBehaviour {
 
 		activeFoods = new List<GameObject>();
 		difficultyLevel = GameManager.GetInstance().GetLevel("MemoryMatch");
+
+		
+		soundManager = GameObject.Find ("SoundManager");
+		
+		language = soundManager.GetComponent<SoundManager>().language;
 	}
 
 	// Update is called once per frame
@@ -75,7 +82,7 @@ public class MemoryMatchGameManager : MonoBehaviour {
 
 		List<GameObject> copy = new List<GameObject>(activeFoods);
 
-		ChooseFoodToMatch();
+		StartCoroutine(ChooseFoodToMatch());
 
 		for(int i = 0; i < difficultyLevel*3; ++i) {
 			GameObject newFood = SpawnFood(copy, true, foodSpawnPos[i], foodParentPos[i], foodScale);
@@ -118,11 +125,13 @@ public class MemoryMatchGameManager : MonoBehaviour {
 		}
 	}
 
-	public void ChooseFoodToMatch() {
+	public IEnumerator ChooseFoodToMatch() {
 		if(!gameStartup) {
 			++score;
 			UpdateScoreText();
 		}
+		
+		yield return new WaitForSeconds(1f);
 
 		if(GameObject.Find ("ToMatchSpawnPos").transform.childCount > 0)
 			Destroy(currentFoodToMatch);
@@ -182,41 +191,81 @@ public class MemoryMatchGameManager : MonoBehaviour {
 
 	IEnumerator PlayFoodName(GameObject currentFoodToMatch)
 	{
-		switch(currentFoodToMatch.name)
+		if (language == "English") {
+			switch (currentFoodToMatch.name) {
+			case "Apple(Clone)":
+				Debug.Log ("Apple");
+				yield return new WaitForSeconds (1.0f);
+				PlayClip (clips [1]);
+				break;
+			
+			case "Artichoke(Clone)":
+				Debug.Log ("Artichoke");
+				yield return new WaitForSeconds (1f);
+				PlayClip (clips [2]);
+				break;
+			
+			case "Banana(Clone)":
+				Debug.Log ("Banana");
+				yield return new WaitForSeconds (1f);
+				PlayClip (clips [3]);
+				break;
+			
+			case "Brocolli(Clone)":
+				Debug.Log ("Brocolli");
+				yield return new WaitForSeconds (1f);
+				PlayClip (clips [4]);
+				break;
+			
+			case "Cabbage(Clone)":
+				Debug.Log ("Cabbage");
+				yield return new WaitForSeconds (1f);
+				PlayClip (clips [5]);
+				break;
+			
+			default:
+				Debug.Log (currentFoodToMatch.name);
+				break;
+			}
+		} 
+
+		else 
 		{
-		case "Apple(Clone)":
-			Debug.Log ("Apple");
-			yield return new WaitForSeconds(1.0f);
-			PlayClip (clips[1]);
-			break;
-			
-		case "Artichoke(Clone)":
-			Debug.Log ("Artichoke");
-			yield return new WaitForSeconds(1f);
-			PlayClip (clips[2]);
-			break;
-			
-		case "Banana(Clone)":
-			Debug.Log ("Banana");
-			yield return new WaitForSeconds(1f);
-			PlayClip (clips[3]);
-			break;
-			
-		case "Brocolli(Clone)":
+			switch (currentFoodToMatch.name) {
+			case "Apple(Clone)":
+				Debug.Log ("Apple");
+				yield return new WaitForSeconds (1.0f);
+				PlayClip (clips [6]);
+				break;
+				
+			case "Artichoke(Clone)":
+				Debug.Log ("Artichoke");
+				yield return new WaitForSeconds (1f);
+				PlayClip (clips [7]);
+				break;
+				
+			case "Banana(Clone)":
+				Debug.Log ("Banana");
+				yield return new WaitForSeconds (1f);
+				PlayClip (clips [8]);
+				break;
+				
+			case "Brocolli(Clone)":
 			Debug.Log ("Brocolli");
-			yield return new WaitForSeconds(1f);
-			PlayClip (clips[4]);
+			yield return new WaitForSeconds (1f);
+			PlayClip (clips [9]);
 			break;
-			
-		case "Cabbage(Clone)":
+				
+			case "Cabbage(Clone)":
 			Debug.Log ("Cabbage");
-			yield return new WaitForSeconds(1f);
-			PlayClip (clips[5]);
+			yield return new WaitForSeconds (1f);
+			PlayClip (clips [10]);
 			break;
-			
-		default:
-			Debug.Log (currentFoodToMatch.name);
-			break;
+				
+			default:
+				Debug.Log (currentFoodToMatch.name);
+				break;
+			}
 		}
 	}
 
