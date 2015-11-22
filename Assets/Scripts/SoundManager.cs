@@ -86,11 +86,13 @@ public class SoundManager : MonoBehaviour {
 		if (language == "English") 
 		{
 			language = "Spanish";
+			Debug.Log ("Language set to Spanish");
 		} 
 
 		else 
 		{
 			language = "English";
+			Debug.Log ("Language set to English");
 		}
 	}
 
