@@ -27,7 +27,8 @@ public class MemoryMatchGameManager : MonoBehaviour {
 	public Text scoreText;
 	public Canvas gameOverCanvas;
 	public GameObject sceneSoundManager;
-	public AudioClip [] clips;
+	public AudioClip clip;
+	public AudioClip win;
 	public string language;
 
 	// Use this for initialization
@@ -161,7 +162,7 @@ public class MemoryMatchGameManager : MonoBehaviour {
 	}
 
 	void GameOver() {
-		PlayClip (clips [0]);
+		PlayClip (win);
 		gameStarted = false;
 		if(score >= difficultyLevel*3) {
 			GameManager.GetInstance().LevelUp("MemoryMatch");
@@ -185,87 +186,26 @@ public class MemoryMatchGameManager : MonoBehaviour {
 
 	void PlayClip(AudioClip clip)
 	{
-		Debug.Log ("Called");
 		sceneSoundManager.GetComponent<SceneSound> ().PlayClip (clip);
 	}
 
 	IEnumerator PlayFoodName(GameObject currentFoodToMatch)
 	{
 		if (language == "English") {
-			switch (currentFoodToMatch.name) {
-			case "Apple(Clone)":
-				Debug.Log ("Apple");
-				yield return new WaitForSeconds (1.0f);
-				PlayClip (clips [1]);
-				break;
-			
-			case "Artichoke(Clone)":
-				Debug.Log ("Artichoke");
-				yield return new WaitForSeconds (1f);
-				PlayClip (clips [2]);
-				break;
-			
-			case "Banana(Clone)":
-				Debug.Log ("Banana");
-				yield return new WaitForSeconds (1f);
-				PlayClip (clips [3]);
-				break;
-			
-			case "Brocolli(Clone)":
-				Debug.Log ("Brocolli");
-				yield return new WaitForSeconds (1f);
-				PlayClip (clips [4]);
-				break;
-			
-			case "Cabbage(Clone)":
-				Debug.Log ("Cabbage");
-				yield return new WaitForSeconds (1f);
-				PlayClip (clips [5]);
-				break;
-			
-			default:
-				Debug.Log (currentFoodToMatch.name);
-				break;
-			}
+
+			yield return new WaitForSeconds(0.5f);
+
+			clip = currentFoodToMatch.GetComponent<MemoryMatchFood> ().clips [0];
+			PlayClip (clip);
+
 		} 
 
 		else 
 		{
-			switch (currentFoodToMatch.name) {
-			case "Apple(Clone)":
-				Debug.Log ("Apple");
-				yield return new WaitForSeconds (1.0f);
-				PlayClip (clips [6]);
-				break;
-				
-			case "Artichoke(Clone)":
-				Debug.Log ("Artichoke");
-				yield return new WaitForSeconds (1f);
-				PlayClip (clips [7]);
-				break;
-				
-			case "Banana(Clone)":
-				Debug.Log ("Banana");
-				yield return new WaitForSeconds (1f);
-				PlayClip (clips [8]);
-				break;
-				
-			case "Brocolli(Clone)":
-			Debug.Log ("Brocolli");
-			yield return new WaitForSeconds (1f);
-			PlayClip (clips [9]);
-			break;
-				
-			case "Cabbage(Clone)":
-			Debug.Log ("Cabbage");
-			yield return new WaitForSeconds (1f);
-			PlayClip (clips [10]);
-			break;
-				
-			default:
-				Debug.Log (currentFoodToMatch.name);
-				break;
-			}
+			yield return new WaitForSeconds(0.5f);
+
+			clip = currentFoodToMatch.GetComponent<MemoryMatchFood> ().clips [1];
+			PlayClip (clip);
 		}
 	}
 

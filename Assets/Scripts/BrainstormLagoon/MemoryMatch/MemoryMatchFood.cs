@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MemoryMatchFood : Food {
 
+	public AudioClip [] clips;
 	// Use this for initialization
 	void Start () {
 	
