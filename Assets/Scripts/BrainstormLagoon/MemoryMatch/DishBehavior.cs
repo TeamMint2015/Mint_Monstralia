@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/* Controls the guessing of the memory match game, and comparison between guessed food and the correct food choice.
+ * Also controls which audio to send to the MemoryMatchGameManager to play.
+ */
+
 public class DishBehavior : MonoBehaviour {
 
 	///The food belonging to this dish.

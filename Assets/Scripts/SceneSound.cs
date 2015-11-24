@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/* Controls the audio for different scenes. Sends either new background music or a
+ * clip to be played to the SoundManager.
+ */
+
 public class SceneSound : MonoBehaviour {
 
 	private GameObject SoundManager;

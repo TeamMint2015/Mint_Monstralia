@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/* Controls the audio source of the game. Will change the sources background music and SFX when passed new data.
+ * Also controls the construction and destruction of the lagoon background music.
+ */
+
 public class SoundManager : MonoBehaviour {
 
 	private static SoundManager instance = null;

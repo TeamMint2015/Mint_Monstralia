@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+/* Controls the workflow of Memory Match Game. Controls the timer, food spawns, the current food to match,
+ * and food audio. As well as displaying the game over screen.
+ */
+
 public class MemoryMatchGameManager : MonoBehaviour {
 
 	private static MemoryMatchGameManager instance;

@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/* Controls the states for the Green Monster's animator controller.
+ */
+
 public class Green_Controller : MonoBehaviour {
 
 	Animator anim;
