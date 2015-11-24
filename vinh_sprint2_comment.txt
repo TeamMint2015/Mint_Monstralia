@@ -1,0 +1,5 @@
+For Sprint 2
+Under Assets/Animation/Green Monster
+Different frames were created from the decomposition of a static picture of a monster in sprint one.
+Arm movements are in this folder and facial expressions for the monster is what I worked on.
+The pictures were sent to Nathan to pre-liminary testing, but they ended working great, so Nathan uploaded the artifact with his code.

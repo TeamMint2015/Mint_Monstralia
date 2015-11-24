@@ -1,0 +1,8 @@
+Under Assets/Animation/Green Monster
+
+There is Monster_1_GREEN.psd.
+This is a photoshop file that has all the decomposition of the Green Monster Character.
+If you have photoshop, it can be opened. I've attached a screen shot of Photoshop 
+with the file opened so you can what's in the file.
+
+The file allows us to create different frames for Sprint 2.
