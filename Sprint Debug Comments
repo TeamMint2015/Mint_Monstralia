@@ -1,0 +1,16 @@
+Current Release Debug Comments
+
+* There are rudementary sound effects and music at the moment, but nothing to match when the monster moves its mouth.
+
+* I was unable to hear the voiceover audio (volume issue or compatability?)
+
+* The screen scales incorrectly when run on most resolutions... it did this before, however, and I believe it's an artifact of being built for tablet.
+
+* The matching game seems good, but the rainbow game is glitchy (see beow)
+
+* The fruit doesn't 'stck' most of the time when placed in rainbow area
+
+* The fruit on he bottom has a tendency to float upwards when moved only a little without matching u with any area on rainbow
+
+* On the Brainstorm Lagoon screen, when you click 'customize', the customize icon and the monster both disappear until you reset the screen
+
