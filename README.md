@@ -20,4 +20,4 @@ All current development is on the 'unity' branch and the 'master' branch is for 
 * To view our current documentation (it is currently incomplete), go to the html directory, and open "index.html" with your favorite browser
 
 ## Contact
-We are currently setting up an email for questions, but for now, please post your questions as a GitHub issue.
+Have any questions? Please email monstralia@healthstartfoundation.org!
